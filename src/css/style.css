@@ -3,7 +3,8 @@ body {
   font-size: large;
 }
 
-ul {
+ul,
+h3 {
   padding: 0;
   font-size: large;
 }
@@ -32,6 +33,10 @@ li {
   box-sizing: border-box;
   background-color: #ffffff;
   margin-right: -15px;
+  overflow: auto;
+  max-height: 550px;
+  z-index: 1;
+  width: 102%;
 }
 
 .chat__member {
@@ -54,6 +59,11 @@ li {
   background-color: #cde0f1;
 }
 
+.member__name {
+  overflow-x: auto;
+  width: 75%;
+}
+
 .chat__window {
   width: 50%;
   height: 600px;
@@ -64,6 +74,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 2;
 }
 
 .chat__messages {
@@ -82,6 +93,13 @@ li {
 
 .chat__message.another-user {
   padding-right: 30%;
+}
+
+.chat__message.bot {
+  text-align: center;
+  font-size: smaller;
+  padding: 0px;
+  margin: 0px;
 }
 
 .message__header {
@@ -120,6 +138,7 @@ li {
   top: 0;
   background-color: #cde0f1;
   opacity: 0.9;
+  z-index: 4;
 }
 
 .username {
@@ -132,6 +151,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 5;
 }
 
 .username__form {
@@ -145,15 +165,21 @@ li {
   text-align: center;
   display: flex;
   flex-direction: column;
+  z-index: 6;
 }
 
 .username__name {
   font-size: medium;
   border: 1px solid #3191f2;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 15px;
   margin: 20px 0px;
   text-align: center;
+}
+
+.username__name:hover {
+  border: 2px solid #3191f2;
+  padding: 14px;
 }
 
 .username__continue-button {
@@ -177,13 +203,10 @@ li {
   display: none;
 }
 
-.error {
-  width: 75%;
-  text-align: center;
-  border: 1px solid #3191f2;
-  border-radius: 5px;
-  box-sizing: border-box;
-  background-color: #edb2b2;
-  padding: 15px;
-  margin: 30px auto 0px auto;
+.popover {
+  position: absolute;
+  padding: 10px;
+  width: 300px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px 0 #0a7df0;
 }
