@@ -1,10 +1,8 @@
 import Popover from './Popover';
 
 export default class Login {
-  constructor(error, parent) {
-    this.parent = parent;
-    this.error = error;
-    this.server = 'ws://localhost:7070/';
+  constructor(server) {
+    this.server = server;
     this.usernameEl = document.querySelector('.username__name');
     this.continueButton = document.querySelector('.username__continue-button');
     this.usernameForm = document.querySelector('.username');
@@ -20,12 +18,14 @@ export default class Login {
       if (this.username === '') {
         new Popover('empty', this.usernameEl).init();
       } else {
-        const ws = new WebSocket(this.server);
-        ws.addEventListener('open', () => {
-          ws.send(JSON.stringify({ event: 'newUser', message: this.username }));
+        this.ws = new WebSocket(this.server);
+        this.ws.addEventListener('open', () => {
+          this.ws.send(
+            JSON.stringify({ event: 'newUser', message: this.username }),
+          );
         });
 
-        ws.addEventListener('message', (evt) => {
+        this.ws.addEventListener('message', (evt) => {
           const message = JSON.parse(evt.data);
 
           if (message.event === 'connect') {

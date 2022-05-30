@@ -36,7 +36,7 @@ li {
   overflow: auto;
   max-height: 550px;
   z-index: 1;
-  width: 102%;
+  width: 103%;
 }
 
 .chat__member {
@@ -49,14 +49,11 @@ li {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  background-color: #cde0f1;
 }
 
 .user .member__picture {
   background-color: #3191f2;
-}
-
-.another-user .member__picture {
-  background-color: #cde0f1;
 }
 
 .member__name {
